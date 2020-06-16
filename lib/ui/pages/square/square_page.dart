@@ -56,6 +56,7 @@ class _SquarePageState extends BaseCollectState<SquarePage> {
               itemBuilder: (context,index){
                 return ArticleItemWidget(snapshot.data[index],);
               },
+              error: snapshot.error,
             );
           }),
     );

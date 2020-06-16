@@ -13,7 +13,8 @@ class OfficialAccountPresenter extends BasePresenter{
 
   Future getOfficialAccountTab(){
     return WanContainer().wanRepository.getWeChatTab()
-        .then((value) => tabController.sink.add(value));
+        .then((value) => tabController.sink.add(value))
+        .catchError((e) => tabController.sink.addError(e));
   }
 
   @override

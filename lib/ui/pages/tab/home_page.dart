@@ -140,6 +140,7 @@ class _HomePageState extends BaseCollectState<HomePage>{
                   :
               ArticleItemWidget(snapshot.data[index - 1],);
             },
+            error: snapshot.error,
           );
         });
   }

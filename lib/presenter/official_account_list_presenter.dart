@@ -35,11 +35,13 @@ class OfficialAccountListPresenter extends BasePresenter implements BaseCollectP
   Future _request(int num){
     return WanContainer().wanRepository.getWebChatList(_id,num)
         .then((value){
-      listController.sink.add(articleList..addAll(value));
-      if(value.length > 0){
-        _currentIndex ++;
-      }
-    });
+          listController.sink.add(articleList..addAll(value));
+          if(value.length > 0){
+            _currentIndex ++;
+          }
+        }).catchError((e){
+          listController.sink.addError(e);
+        });
   }
 
   @override

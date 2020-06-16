@@ -55,6 +55,7 @@ class _CoinPageState extends State<CoinPage> {
               itemBuilder: (context,index){
                 return CoinItemWidget(snapshot.data[index],);
               },
+              error: snapshot.error,
             );
           }),
     );

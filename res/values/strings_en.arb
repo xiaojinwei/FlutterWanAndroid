@@ -44,5 +44,8 @@
   "user_share": "User Share",
   "points_details": "Points Details",
   "share_failed": "Share failed",
-  "share_success": "Share success"
+  "share_success": "Share success",
+  "network_error_hint": "There is a problem with the network ~ please check the network settings",
+  "click_reload": "Click on the screen to reload",
+  "empty_hint": "Empty ~"
 }

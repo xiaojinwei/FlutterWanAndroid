@@ -13,7 +13,8 @@ class ProjectPresenter extends BasePresenter{
 
   Future getProjectTab(){
     return WanContainer().wanRepository.getProjectTab()
-        .then((value) => projectTabController.sink.add(value));
+        .then((value) => projectTabController.sink.add(value))
+        .catchError((e) => projectTabController.sink.addError(e));
   }
 
   @override

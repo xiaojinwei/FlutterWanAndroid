@@ -29,11 +29,13 @@ class RankPresenter extends BasePresenter {
   Future _request(int num){
     return WanContainer().wanRepository.getRankList(num)
         .then((value){
-      listController.sink.add(rankList..addAll(value));
-      if(value.length > 0){
-        _currentIndex ++;
-      }
-    });
+          listController.sink.add(rankList..addAll(value));
+          if(value.length > 0){
+            _currentIndex ++;
+          }
+        }).catchError((e){
+          listController.sink.addError(e);
+        });
   }
 
   @override

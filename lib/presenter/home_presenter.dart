@@ -39,6 +39,8 @@ class HomePresenter extends BasePresenter implements BaseCollectPresenter{
         .then((value){
           homeArticleController.sink.add(articleList..addAll(value));
           _requestArticleList(_currentIndex);
+        }).catchError((e){
+          homeArticleController.sink.addError(e);
         });
   }
 
@@ -49,6 +51,8 @@ class HomePresenter extends BasePresenter implements BaseCollectPresenter{
           if(value.length > 0){
             _currentIndex ++;
           }
+        }).catchError((e){
+          homeArticleController.sink.addError(e);
         });
   }
   

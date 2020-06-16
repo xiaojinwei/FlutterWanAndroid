@@ -58,6 +58,7 @@ class _TreeListPageState extends BaseCollectState<TreeListPage> {
             itemBuilder: (context,index){
               return ArticleItemWidget(snapshot.data[index],);
             },
+            error: snapshot.error,
           );
         });
   }

@@ -31,11 +31,13 @@ class WenDaPresenter extends BasePresenter implements BaseCollectPresenter {
   Future _request(int num){
     return WanContainer().wanRepository.getWenDaList(num)
         .then((value){
-      listController.sink.add(articleList..addAll(value));
-      if(value.length > 0){
-        _currentIndex ++;
-      }
-    });
+          listController.sink.add(articleList..addAll(value));
+          if(value.length > 0){
+            _currentIndex ++;
+          }
+        }).catchError((e){
+          listController.sink.addError(e);
+        });
   }
 
   @override

@@ -66,6 +66,7 @@ class _RankPageState extends State<RankPage> {
                   itemBuilder: (context,index){
                     return RankItemWidget(snapshot.data[index],onTap: ()=>NavigatorUtil.gotoShare(context,userId: snapshot.data[index].userId),);
                   },
+                  error: snapshot.error,
                 )),
                 _myRanking(context)
               ],

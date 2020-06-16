@@ -87,6 +87,10 @@ class _SystemTreeFragmentState extends State<SystemTreeFragment> {
   @override
   void initState() {
     super.initState();
+    _requestRefresh();
+  }
+
+  void _requestRefresh(){
     widget.type == SystemTreeFragment.TYPE_NAVI
         ? presenter.requestNavigation()
         : presenter.requestTree();
@@ -114,6 +118,7 @@ class _SystemTreeFragmentState extends State<SystemTreeFragment> {
             itemBuilder: (context,index){
               return TreeItem(snapshot.data[index],);
             },
+            error: snapshot.error,
           );
         });
   }

@@ -38,12 +38,14 @@ class SharePresenter extends BasePresenter implements BaseCollectPresenter {
   Future _request(int num){
     return _getFuture(num)
         .then((value){
-      rankData = value.coinInfo;
-      listController.sink.add(articleList..addAll(value.shareArticles?.datas));
-      if((value?.shareArticles?.datas?.length??0) > 0){
-        _currentIndex ++;
-      }
-    });
+          rankData = value.coinInfo;
+          listController.sink.add(articleList..addAll(value.shareArticles?.datas));
+          if((value?.shareArticles?.datas?.length??0) > 0){
+            _currentIndex ++;
+          }
+        }).catchError((e){
+          listController.sink.addError(e);
+        });
   }
   
   Future _getFuture(int num){

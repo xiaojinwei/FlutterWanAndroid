@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamic/common/const.dart';
+import 'package:flutter_dynamic/utils/i18n_util.dart';
+import 'package:flutter_dynamic/utils/string_util.dart';
 import 'package:flutter_dynamic/utils/util.dart';
+import 'package:flutter/foundation.dart';
 
 class StatusViews extends StatelessWidget {
-  const StatusViews(this.status, {Key key, this.onTap}) : super(key: key);
+  const StatusViews(this.status, {Key key, this.onTap,this.error}) : super(key: key);
   final int status;
+  final String error;
   final GestureTapCallback onTap;
 
   @override
@@ -14,7 +18,7 @@ class StatusViews extends StatelessWidget {
         return new Container(
           width: double.infinity,
           child: new Material(
-            color: Colors.white,
+            //color: Colors.white,
             child: new InkWell(
               onTap: () {
                 onTap();
@@ -24,15 +28,32 @@ class StatusViews extends StatelessWidget {
                 children: <Widget>[
                   new Image.asset(
                     Util.getImgPath("load_fail"),
-                    width: 100,
-                    height: 100,
+                    width: 60,
+                    height: 60,
                   ),
-                  new Text(
-                    "网络出问题了～ 请您查看网络设置",
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(24, 16, 24, 8),
+                    child: new Text(
+                      I18nUtil.getS(context).network_error_hint,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  new Text(
-                    "点击屏幕，重新加载",
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(24, 8, 24, 8),
+                    child:  new Text(
+                      I18nUtil.getS(context).click_reload,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
+                  kDebugMode && StringUtil.isNotEmpty(this.error) ?
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(24, 12, 24, 8),
+                    child:  new Text(
+                      this.error,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 10),
+                    ),
+                  ) : Container()
                 ],
               ),
             ),
@@ -42,13 +63,13 @@ class StatusViews extends StatelessWidget {
       case LoadStatus.loading:
         return new Container(
           alignment: Alignment.center,
-          color: Colors.grey,
+          //color: Colors.grey,
           child: new ProgressView(),
         );
         break;
       case LoadStatus.empty:
         return new Container(
-          color: Colors.white,
+          //color: Colors.white,
           width: double.infinity,
           child: new Center(
             child: new Column(
@@ -59,8 +80,12 @@ class StatusViews extends StatelessWidget {
                   width: 60,
                   height: 60,
                 ),
-                new Text(
-                  "空空如也～",
+                Padding(
+                  padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
+                  child:  new Text(
+                    I18nUtil.getS(context).empty_hint,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),

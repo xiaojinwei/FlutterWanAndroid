@@ -4,7 +4,6 @@ import 'package:flutter_dynamic/net/data/index.dart';
 
 import '../container.dart';
 import 'base_presenter.dart';
-import 'base_collect_presenter.dart';
 
 class CoinPresenter extends BasePresenter {
 
@@ -29,11 +28,13 @@ class CoinPresenter extends BasePresenter {
   Future _request(int num){
     return WanContainer().wanRepository.getCoinLgList(num)
         .then((value){
-      listController.sink.add(rankList..addAll(value));
-      if(value.length > 0){
-        _currentIndex ++;
-      }
-    });
+          listController.sink.add(rankList..addAll(value));
+          if(value.length > 0){
+            _currentIndex ++;
+          }
+        }).catchError((e){
+          listController.sink.addError(e);
+        });
   }
 
   @override

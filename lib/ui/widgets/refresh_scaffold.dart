@@ -16,7 +16,8 @@ class RefreshScaffold extends StatefulWidget {
       this.onLoadMore,
       this.child,
       this.itemCount,
-      this.itemBuilder})
+      this.itemBuilder,
+      this.error})
       : super(key: key);
 
   final String labelId;
@@ -28,6 +29,7 @@ class RefreshScaffold extends StatefulWidget {
   final Widget child;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
+  final String error;
 
   @override
   State<StatefulWidget> createState() {
@@ -99,6 +101,7 @@ class RefreshScaffoldState extends State<RefreshScaffold>
                 onRefresh: widget.onRefresh),
             new StatusViews(
               widget.loadStatus,
+              error: widget.error,
               onTap: () {
                 widget.onRefresh(isReload: true);
               },

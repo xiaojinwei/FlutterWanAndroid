@@ -44,5 +44,8 @@
   "user_share": "分享人分享",
   "points_details": "积分明细",
   "share_failed": "分享失败",
-  "share_success": "分享成功"
+  "share_success": "分享成功",
+  "network_error_hint": "网络出问题了～ 请您查看网络设置",
+  "click_reload": "点击屏幕，重新加载",
+  "empty_hint": "空空如也～"
 }

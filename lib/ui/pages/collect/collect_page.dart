@@ -80,6 +80,7 @@ class _CollectPageState extends BaseCollectState<CollectPage> {
               itemBuilder: (context,index){
                 return ArticleItemWidget(snapshot.data[index],type: ArticleItemWidget.TYPE_COLLECT,);
               },
+              error: snapshot.error,
             );
           }),
     );

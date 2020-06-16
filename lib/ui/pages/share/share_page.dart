@@ -79,6 +79,7 @@ class _SharePageState extends BaseCollectState<SharePage> {
               itemBuilder: (context,index){
                 return ArticleItemWidget(snapshot.data[index],type: _getArticleType(),);
               },
+              error: snapshot.error,
             );
           }),
     );

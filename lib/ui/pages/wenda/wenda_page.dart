@@ -56,6 +56,7 @@ class _WenDaPageState extends BaseCollectState<WenDaPage> {
               itemBuilder: (context,index){
                 return ArticleItemWidget(snapshot.data[index],);
               },
+              error: snapshot.error,
             );
           }),
     );

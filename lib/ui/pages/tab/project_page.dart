@@ -8,6 +8,7 @@ import 'package:flutter_dynamic/ui/widgets/refresh_scaffold.dart';
 import 'package:flutter_dynamic/ui/widgets/status_views.dart';
 import 'package:flutter_dynamic/utils/util.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:flutter_dynamic/ui/widgets/refresh_status.dart';
 
 class ProjectPage extends StatefulWidget{
   @override
@@ -39,41 +40,51 @@ class _ProjectPageState extends State<ProjectPage> with TickerProviderStateMixin
       body: StreamBuilder(
           stream: presenter.projectTabStream,
           builder: (context,snapshot){
-            if(snapshot.data == null){
-              return ProgressView();
-            }
-            _controller = TabController(length: snapshot.data.length, vsync: this);
-            return DefaultTabController(
-                length: snapshot.data.length,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      color: Theme.of(context).primaryColor,
-                      child: TabBar(
-                        controller: _controller,
-                        isScrollable: true,
-                        labelColor: Colors.white,
-                        labelPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        indicator: UnderlineTabIndicator(
-                            borderSide: BorderSide(color: Colors.white,width: 3),
-                            insets: EdgeInsets.fromLTRB(0, 0, 0, 0)
-                        ),
-                        tabs: snapshot.data.map<Tab>((TabLabel tab){
-                          return Tab(text: tab.name,);
-                        }).toList(),
-                      ),
-                    ),
-                    Flexible(child: TabBarView(
-                      controller: _controller,
-                      children: snapshot.data.map<Widget>((TabLabel tab){
-                        return ProjectFragment(tab.id);
-                      }).toList(),
-                    ))
-                  ],
-                )
+            //if(snapshot.data == null){
+            //  return ProgressView();
+            //}
+            _controller = TabController(length: snapshot.data?.length??0, vsync: this);
+            return RefreshStatusView(
+              loadStatus: Util.getLoadStatus(snapshot.hasError, snapshot.data),
+              onRefresh: () => presenter.getProjectTab(),
+              child: _body(context, snapshot),
+              error: snapshot.error,
             );
           }
       ),
+    );
+  }
+
+  _body(context,snapshot){
+    if(snapshot.data == null) return Container();
+    return DefaultTabController(
+        length: snapshot.data.length,
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Theme.of(context).primaryColor,
+              child: TabBar(
+                controller: _controller,
+                isScrollable: true,
+                labelColor: Colors.white,
+                labelPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(color: Colors.white,width: 3),
+                    insets: EdgeInsets.fromLTRB(0, 0, 0, 0)
+                ),
+                tabs: snapshot.data.map<Tab>((TabLabel tab){
+                  return Tab(text: tab.name,);
+                }).toList(),
+              ),
+            ),
+            Flexible(child: TabBarView(
+              controller: _controller,
+              children: snapshot.data.map<Widget>((TabLabel tab){
+                return ProjectFragment(tab.id);
+              }).toList(),
+            ))
+          ],
+        )
     );
   }
 
@@ -128,6 +139,7 @@ class _ProjectFragmentState extends BaseCollectState<ProjectFragment> {
             itemBuilder: (context,index){
               return ArticleItemWidget(snapshot.data[index],);
             },
+            error: snapshot.error,
           );
         });
   }

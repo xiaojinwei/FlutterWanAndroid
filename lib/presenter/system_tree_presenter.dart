@@ -17,12 +17,14 @@ class SystemTreePresenter extends BasePresenter{
 
   Future requestTree(){
     return WanContainer().wanRepository.getTree()
-        .then((value)=>treeController.sink.add(value));
+        .then((value)=>treeController.sink.add(value))
+        .catchError((e)=>treeController.sink.addError(e));
   }
 
   Future requestNavigation(){
     return WanContainer().wanRepository.getNavigation()
-        .then((value)=>naviController.sink.add(value));
+        .then((value)=>naviController.sink.add(value))
+        .catchError((e)=>naviController.sink.addError(e));
   }
 
   @override

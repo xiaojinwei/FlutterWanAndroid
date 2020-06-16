@@ -56,6 +56,7 @@ class _SearchResultViewState extends State<SearchResultView> {
               itemBuilder: (context,index){
                 return ArticleItemWidget(snapshot.data[index],type: ArticleItemWidget.TYPE_NORMAL,);
               },
+              error: snapshot.error,
             );
           }),
     );
