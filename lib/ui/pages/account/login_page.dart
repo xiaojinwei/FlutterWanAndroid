@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget{
               ),
             ),
           ),
-          Container(
+          /*Container(
             padding: EdgeInsets.all(8),
             child: Center(
               child: InkWell(
@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget{
                 onTap: ()=>NavigatorUtil.gotoMainOrBack(context),
               ),
             ),
-          )
+          )*/
         ],
       ),
       body: new Container(

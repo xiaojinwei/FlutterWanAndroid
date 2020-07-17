@@ -90,6 +90,11 @@ class ThemeUtil{
     return color;
   }
 
+  static Color getPrimaryColorWithDark(BuildContext context){
+    bool isDark = ThemeUtil.isDarkMode(context);
+    return isDark ? Theme.of(context).accentColor : Theme.of(context).primaryColor;
+  }
+
   static ThemeData getTheme(BuildContext context,{bool isDarkMode = false}){
     var themeState = getThemeState(context);
     return ThemeData(

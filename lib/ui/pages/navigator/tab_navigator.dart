@@ -8,6 +8,7 @@ import 'package:flutter_dynamic/ui/presentation/platform_adaptive.dart';
 import 'package:flutter_dynamic/styles/colors.dart';
 import 'package:flutter_dynamic/utils/i18n_util.dart';
 import 'package:flutter_dynamic/utils/navigator_util.dart';
+import 'package:flutter_dynamic/utils/theme_util.dart';
 
 
 class TabNavigator extends StatefulWidget{
@@ -33,7 +34,7 @@ class _TabNavigatorState extends State<TabNavigator>{
   @override
   Widget build(BuildContext context) {
     _defaultColor = Colors.grey;
-    _activeColor = Theme.of(context).primaryColor;
+    _activeColor = ThemeUtil.getPrimaryColorWithDark(context);
     _titles.clear();
     _titles.add(I18nUtil.getS(context).tab_one);
     _titles.add(I18nUtil.getS(context).tab_two);
