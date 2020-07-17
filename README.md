@@ -15,3 +15,12 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # FlutterWanAndroid
+
+![](../z_picture/WechatIMG1.jpeg)
+![](../z_picture/WechatIMG2.jpeg)
+![](../z_picture/WechatIMG3.jpeg)
+![](../z_picture/WechatIMG4.jpeg)
+![](../z_picture/WechatIMG5.jpeg)
+![](../z_picture/WechatIMG6.jpeg)
+![](../z_picture/WechatIMG7.jpeg)
+![](../z_picture/WechatIMG8.jpeg)
