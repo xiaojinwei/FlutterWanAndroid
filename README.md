@@ -16,11 +16,11 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 # FlutterWanAndroid
 
-<img src="../z_picture/WechatIMG1.jpeg"/>
-<img src="../z_picture/WechatIMG2.jpeg"/>
-<img src="../z_picture/WechatIMG3.jpeg"/>
-<img src="../z_picture/WechatIMG4.jpeg"/>
-<img src="../z_picture/WechatIMG5.jpeg"/>
-<img src="../z_picture/WechatIMG6.jpeg"/>
-<img src="../z_picture/WechatIMG7.jpeg"/>
-<img src="../z_picture/WechatIMG8.jpeg"/>
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG1.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG2.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG3.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG4.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG5.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG6.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG7.jpeg">
+<img src="https://github.com/xiaojinwei/FlutterWanAndroid/blob/master/z_picture/WechatIMG8.jpeg">
